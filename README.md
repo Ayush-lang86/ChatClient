@@ -43,7 +43,3 @@ Run the server first:
 ```bash
 cd server
 ./server
-👨‍💻 Author
-
-Ayush Saxena
-C++ • Qt • Networking
