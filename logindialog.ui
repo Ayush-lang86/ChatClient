@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginDialog</class>
+ <widget class="QDialog" name="LoginDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*==================================================
+                ROYAL GOLD THEME
+==================================================*/
+
+QDialog{
+    background-color:#1B1B1B;
+}
+
+QWidget{
+    background-color:#1B1B1B;
+    color:#F5F5F5;
+    font-family:&quot;Segoe UI&quot;;
+    font-size:12pt;
+}
+QFrame{
+    background-color: orange;
+    border:2px brown;
+    border-radius : 50px;
+}
+
+/*========================
+        HEADER
+========================*/
+
+QLabel#text{
+    font-size:24px;
+    font-family:&quot;Segoe UI&quot;;
+    font-weight:bold;
+    color:solid gold;
+}
+
+QLabel#label{
+    color:solid gold;
+    font-size:13px;
+    font-family:&quot;Segoe UI&quot;;
+    font-weight:bold;
+}
+
+
+/*========================
+      USERNAME BOX
+========================*/
+
+QLineEdit{
+
+    background:#2D2D2D;
+
+    color:white;
+
+    border:2px solid gold;
+
+    border-radius:18px;
+
+    padding:8px;
+
+}
+
+QLineEdit:focus{
+
+    border:2px solid #FFD700;
+
+}
+
+
+/*========================
+      SEND BUTTON
+========================*/
+
+QPushButton#pushButton{
+
+    background:qlineargradient(
+        x1:0,y1:0,
+        x2:0,y2:1,
+        stop:0 #FFD700,
+        stop:1 #D4AF37
+    );
+
+    color:black;
+
+    border:2px solid #FFF4A3;
+
+    border-radius:18px;
+
+    padding:8px 18px;
+
+    font-weight:bold;
+
+}
+
+QPushButton#pushButton:hover{
+
+    background:#FFE95E;
+
+}
+
+QPushButton#pushButton:pressed{
+
+    background:#C9A000;
+
+}
+
+
+/*========================
+      STATUS BAR
+========================*/
+
+QStatusBar{
+
+    background:#151515;
+
+    color:gold;
+
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
+   <property name="spacing">
+    <number>50</number>
+   </property>
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+    <widget class="QFrame" name="frame">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="topMargin">
+       <number>60</number>
+      </property>
+      <property name="rightMargin">
+       <number>30</number>
+      </property>
+      <property name="bottomMargin">
+       <number>60</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="text">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:700; font-style:italic;&quot;&gt;Enter Username : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="maxLength">
+         <number>47</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QPushButton" name="pushButton">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ok</string>
+        </property>
+        <property name="shortcut">
+         <string>Return</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
