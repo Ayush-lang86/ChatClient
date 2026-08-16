@@ -1,45 +1,78 @@
-# 💬 ChatClient – Qt C++ Real-Time Chat Application
+# ChatClient
 
-A real-time client-server chat application built using **C++ and Qt Framework**.  
-This project demonstrates socket programming, GUI development, and basic networking concepts using TCP communication.
+A lightweight LAN chat client built with **Qt6 (Widgets)** and raw TCP sockets. It connects to a chat server over a socket, authenticates with a username, and lets you send messages to selected users on the network, all through a simple desktop UI.
 
----
+## Features
 
-## 🚀 Features
+- 🔐 Username-based authentication with server-side validation (invalid / taken / accepted)
+- 💬 Real-time messaging over TCP, using newline-delimited JSON packets
+- 👥 Live user list with join/leave events
+- 🎨 Simple, styled chat window (custom message bubbles, timestamps, sender highlighting)
+- ✅ Basic client-side message validation (length limits, disallowed characters)
 
-- 🔌 Real-time messaging system
-- 👥 Multi-client support via server
-- 🧵 Concurrent client handling (threaded communication)
-- 🖥️ Qt-based graphical user interface (GUI)
-- 📡 TCP/IP socket communication
-- 🔐 Basic username-based authentication
-- 📣 Broadcast messaging between connected users
+## Tech Stack
 
----
+- **C++17**
+- **Qt6** (`Core`, `Widgets`)
+- **[nlohmann/json](https://github.com/nlohmann/json)** (bundled as `json.hpp`) for packet serialization
+- POSIX sockets (`sys/socket.h`, `arpa/inet.h`) for networking
+- **CMake** (>= 3.19) build system
 
-## 🛠️ Tech Stack
+## Project Structure
 
-- C++
-- Qt (Qt Widgets + Qt Network)
-- TCP Sockets
-- Multithreading (Qt / STL depending on implementation)
-
----
-## 📁 Project Structure
+```
 ChatClient/
-│
-├── client/ # Qt Client application
-├── server/ # Server application
-├── ui/ # Qt Designer UI files
-├── core/ # Networking + logic layer
-└── README.md
+├── CMakeLists.txt        # Build configuration
+├── main.cpp               # Application entry point
+├── client.h / client.cpp  # Networking layer (socket, auth, send/receive loop)
+├── mainwindow.h/.cpp/.ui  # Main chat window
+├── logindialog.h/.cpp/.ui # Username/login dialog
+├── json.hpp                # Bundled nlohmann::json single-header library
+└── resources.qrc           # Qt resources
+```
 
-## ⚙️ How to Run
+## Requirements
 
-### 1. Start the Server
+- CMake 3.19+
+- Qt 6.5+ (Core, Widgets)
+- A C++17-capable compiler (g++/clang)
+- A Linux/POSIX environment (the networking code uses POSIX sockets, e.g. `arpa/inet.h`, `unistd.h`)
 
-Run the server first:
+## Building
 
 ```bash
-cd server
-./server
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build .
+```
+
+## Running
+
+The client expects a compatible chat server listening on `127.0.0.1:8080`. Start the server first, then run:
+
+```bash
+./ChatClient
+```
+
+On launch you'll be prompted for a username. Once authenticated, select one or more users from the list and start chatting.
+
+## Server Protocol (expected)
+
+The client communicates with the server using newline-delimited JSON messages. Example packet types:
+
+| Type       | Direction       | Purpose                                  |
+|------------|-----------------|-------------------------------------------|
+| `auth`     | client ⇄ server | Username submission / auth status         |
+| `message`  | client ⇄ server | Chat message with sender/recipients        |
+| `event`    | server → client | User joined/left notifications             |
+| `userlist` | server → client | Full list of currently connected users      |
+
+## Known Limitations
+
+- Server address/port are currently hardcoded (`127.0.0.1:8080`) in `client.cpp`.
+- No message encryption/TLS — intended for trusted LAN use only.
+- No persistent message history.
+
+## License
+
+*(Add a license here, e.g. MIT, before publishing.)*
